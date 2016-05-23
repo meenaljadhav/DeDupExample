@@ -133,24 +133,46 @@ public class DeDup {
 				20, 17, 8, 15, 6, 2, 5, 10, 14, 12, 13, 7, 8, 9, 1, 2, 15, 12, 18, 10, 14, 20, 17, 16, 3, 6, 19, 13, 5,
 				11, 4, 7, 19, 16, 5, 9, 12, 3, 20, 7, 15, 17, 10, 6, 1, 8, 18, 4, 14, 13, 2, 11 };
 		logger.info("Start");
+		
+		
 		DeDup deDup = new DeDup(input);
 		
 		long start = System.currentTimeMillis();
-		deDup.removeDuplicatesWithSet();
+		int[] deDupFromSetImpl = deDup.removeDuplicatesWithSet();
+		long afterSet = System.currentTimeMillis();
 		
-		long set = System.currentTimeMillis();
-		deDup.removeDuplicatesWithArray();
-
-		long array = System.currentTimeMillis();
-		deDup.removeDuplicatesWithList();
-		long list = System.currentTimeMillis();
-
+		
+		long beforeArray = System.currentTimeMillis();
+		int[] deDupFromArrayImpl = deDup.removeDuplicatesWithArray();
+		long afterArray = System.currentTimeMillis();
+		
+		long beforeList = System.currentTimeMillis();
+		int[] deDupFromListImpl = deDup.removeDuplicatesWithList();
+		long afterList = System.currentTimeMillis();
+		
 		if (logger.isInfoEnabled()) {
 			StringBuilder sb = new StringBuilder();
-			sb.append("Total time taken is ").append((list - start)).append(" milliseconds\n")
-					.append("Time for Set implementation is ").append((set - start)).append(" milliseconds\n")
-					.append("Time for Array implementation is ").append((array - set)).append(" milliseconds\n")
-					.append("Time for List implementation is ").append((list - array)).append(" milliseconds\n");
+
+			sb.append("\nTotal time taken is ").append((afterList - start)).append(" milliseconds\n");
+
+			sb.append("\n\nInput Integer Array has ").append(input.length).append(" elements\n");
+			for (int s : input) {
+				sb.append(s).append(" ");
+			}
+
+			sb.append("\n\nOutput from Set Implementation has ").append(deDupFromSetImpl.length).append(" elements and took ").append((afterSet - start)).append(" milliseconds\n");
+			for (int s : deDupFromSetImpl) {
+				sb.append(s).append(" ");
+			}
+			sb.append("\n\nOutput from Array Implementation has ").append(deDupFromArrayImpl.length).append(" elements and took ").append((afterArray - beforeArray)).append(" milliseconds\n");
+			for( int s : deDupFromArrayImpl) {
+				sb.append(s).append(" ");
+			}
+			sb.append("\n\nOutput from List Implementation has ").append(deDupFromArrayImpl.length).append(" elements and took ").append((afterList - beforeList)).append(" milliseconds\n");
+			for (int s : deDupFromListImpl) {
+				sb.append(s).append(" ");
+			}
+
 			logger.info(sb.toString());
 		}
 		logger.info("End");
