@@ -1,0 +1,126 @@
+src/main/java/com/dedup/example/DeDup.java:56:	Comment is too large: Too many lines
+src/main/java/com/dedup/example/DeDup.java:70:	Found 'UR'-anomaly for variable 'i' (lines '70'-'74').
+src/main/java/com/dedup/example/DeDup.java:70:	Found 'UR'-anomaly for variable 'in' (lines '70'-'79').
+src/main/java/com/dedup/example/DeDup.java:71:	Found 'DU'-anomaly for variable 'start' (lines '71'-'85').
+src/main/java/com/dedup/example/DeDup.java:72:	Local variable 'hashSet' could be declared final
+src/main/java/com/dedup/example/DeDup.java:73:	Local variable 'i' could be declared final
+src/main/java/com/dedup/example/DeDup.java:74:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/com/dedup/example/DeDup.java:76:	Found 'DD'-anomaly for variable 'returnValue' (lines '76'-'79').
+src/main/java/com/dedup/example/DeDup.java:76:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/com/dedup/example/DeDup.java:77:	Avoid variables with short names like i
+src/main/java/com/dedup/example/DeDup.java:77:	Found 'DU'-anomaly for variable 'i' (lines '77'-'85').
+src/main/java/com/dedup/example/DeDup.java:78:	Local variable 'in' could be declared final
+src/main/java/com/dedup/example/DeDup.java:79:	Found 'DD'-anomaly for variable 'returnValue' (lines '79'-'79').
+src/main/java/com/dedup/example/DeDup.java:87:	Comment is too large: Too many lines
+src/main/java/com/dedup/example/DeDup.java:98:	Found 'UR'-anomaly for variable 's' (lines '98'-'103').
+src/main/java/com/dedup/example/DeDup.java:98:	Found 'UR'-anomaly for variable 's' (lines '98'-'112').
+src/main/java/com/dedup/example/DeDup.java:98:	Found 'UR'-anomaly for variable 's' (lines '98'-'119').
+src/main/java/com/dedup/example/DeDup.java:99:	Avoid declaring a variable if it is unreferenced before a possible exit point.
+src/main/java/com/dedup/example/DeDup.java:99:	Found 'DU'-anomaly for variable 'start' (lines '99'-'127').
+src/main/java/com/dedup/example/DeDup.java:101:	Found 'DD'-anomaly for variable 'deDup' (lines '101'-'106').
+src/main/java/com/dedup/example/DeDup.java:101:	Found 'DU'-anomaly for variable 'deDup' (lines '101'-'127').
+src/main/java/com/dedup/example/DeDup.java:102:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:103:	Avoid using Literals in Conditional Statements
+src/main/java/com/dedup/example/DeDup.java:106:	Found 'DD'-anomaly for variable 'deDup' (lines '106'-'106').
+src/main/java/com/dedup/example/DeDup.java:106:	Found 'DU'-anomaly for variable 'deDup' (lines '106'-'127').
+src/main/java/com/dedup/example/DeDup.java:110:	Found 'DD'-anomaly for variable 'total' (lines '110'-'113').
+src/main/java/com/dedup/example/DeDup.java:111:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:113:	Found 'DD'-anomaly for variable 'total' (lines '113'-'113').
+src/main/java/com/dedup/example/DeDup.java:116:	Found 'DD'-anomaly for variable 'returnValue' (lines '116'-'120').
+src/main/java/com/dedup/example/DeDup.java:117:	Avoid variables with short names like i
+src/main/java/com/dedup/example/DeDup.java:117:	Found 'DU'-anomaly for variable 'i' (lines '117'-'127').
+src/main/java/com/dedup/example/DeDup.java:118:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:120:	Found 'DD'-anomaly for variable 'returnValue' (lines '120'-'120').
+src/main/java/com/dedup/example/DeDup.java:132:	Found 'UR'-anomaly for variable 's' (lines '132'-'135').
+src/main/java/com/dedup/example/DeDup.java:134:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:142:	Comment is too large: Too many lines
+src/main/java/com/dedup/example/DeDup.java:156:	Found 'UR'-anomaly for variable 's' (lines '156'-'160').
+src/main/java/com/dedup/example/DeDup.java:156:	Found 'UR'-anomaly for variable 's' (lines '156'-'167').
+src/main/java/com/dedup/example/DeDup.java:157:	Found 'DU'-anomaly for variable 'start' (lines '157'-'173').
+src/main/java/com/dedup/example/DeDup.java:158:	Local variable 'list' could be declared final
+src/main/java/com/dedup/example/DeDup.java:159:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:160:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/com/dedup/example/DeDup.java:161:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/com/dedup/example/DeDup.java:164:	Found 'DD'-anomaly for variable 'returnValue' (lines '164'-'167').
+src/main/java/com/dedup/example/DeDup.java:164:	Potential violation of Law of Demeter (object not created locally)
+src/main/java/com/dedup/example/DeDup.java:165:	Avoid variables with short names like i
+src/main/java/com/dedup/example/DeDup.java:165:	Found 'DU'-anomaly for variable 'i' (lines '165'-'173').
+src/main/java/com/dedup/example/DeDup.java:166:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:167:	Found 'DD'-anomaly for variable 'returnValue' (lines '167'-'167').
+src/main/java/com/dedup/example/DeDup.java:179:	Found 'UR'-anomaly for variable 's' (lines '179'-'208').
+src/main/java/com/dedup/example/DeDup.java:179:	Parameter 'args' is not assigned and could be declared final
+src/main/java/com/dedup/example/DeDup.java:186:	Local variable 'deDup' could be declared final
+src/main/java/com/dedup/example/DeDup.java:188:	Found 'DU'-anomaly for variable 'start' (lines '188'-'227').
+src/main/java/com/dedup/example/DeDup.java:188:	Local variable 'start' could be declared final
+src/main/java/com/dedup/example/DeDup.java:189:	Found 'DU'-anomaly for variable 'deDupFromSetImpl' (lines '189'-'227').
+src/main/java/com/dedup/example/DeDup.java:189:	Local variable 'deDupFromSetImpl' could be declared final
+src/main/java/com/dedup/example/DeDup.java:190:	Found 'DU'-anomaly for variable 'afterSet' (lines '190'-'227').
+src/main/java/com/dedup/example/DeDup.java:190:	Local variable 'afterSet' could be declared final
+src/main/java/com/dedup/example/DeDup.java:193:	Found 'DU'-anomaly for variable 'beforeArray' (lines '193'-'227').
+src/main/java/com/dedup/example/DeDup.java:193:	Local variable 'beforeArray' could be declared final
+src/main/java/com/dedup/example/DeDup.java:194:	Avoid excessively long variable names like deDupFromArrayImpl
+src/main/java/com/dedup/example/DeDup.java:194:	Found 'DU'-anomaly for variable 'deDupFromArrayImpl' (lines '194'-'227').
+src/main/java/com/dedup/example/DeDup.java:194:	Local variable 'deDupFromArrayImpl' could be declared final
+src/main/java/com/dedup/example/DeDup.java:195:	Found 'DU'-anomaly for variable 'afterArray' (lines '195'-'227').
+src/main/java/com/dedup/example/DeDup.java:195:	Local variable 'afterArray' could be declared final
+src/main/java/com/dedup/example/DeDup.java:197:	Found 'DU'-anomaly for variable 'beforeList' (lines '197'-'227').
+src/main/java/com/dedup/example/DeDup.java:197:	Local variable 'beforeList' could be declared final
+src/main/java/com/dedup/example/DeDup.java:198:	Found 'DU'-anomaly for variable 'deDupFromListImpl' (lines '198'-'227').
+src/main/java/com/dedup/example/DeDup.java:198:	Local variable 'deDupFromListImpl' could be declared final
+src/main/java/com/dedup/example/DeDup.java:199:	Found 'DU'-anomaly for variable 'afterList' (lines '199'-'227').
+src/main/java/com/dedup/example/DeDup.java:199:	Local variable 'afterList' could be declared final
+src/main/java/com/dedup/example/DeDup.java:202:	Avoid variables with short names like sb
+src/main/java/com/dedup/example/DeDup.java:202:	Local variable 'sb' could be declared final
+src/main/java/com/dedup/example/DeDup.java:204:	StringBuffer (or StringBuilder).append is called 2 consecutive times with literal Strings. Use a single append with a single combined String.
+src/main/java/com/dedup/example/DeDup.java:204:	StringBuffer (or StringBuilder).append is called consecutively without reusing the target variable.
+src/main/java/com/dedup/example/DeDup.java:204:	The String literal " milliseconds\n" appears 4 times in this file; the first occurrence is on line 204
+src/main/java/com/dedup/example/DeDup.java:207:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:212:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:216:	Local variable 's' could be declared final
+src/main/java/com/dedup/example/DeDup.java:220:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:20:	Each class should declare at least one constructor
+src/test/java/com/dedup/example/DeDupTest.java:20:	This class has too many methods, consider refactoring it.
+src/test/java/com/dedup/example/DeDupTest.java:21:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/dedup/example/DeDupTest.java:21:	fieldCommentRequirement Required
+src/test/java/com/dedup/example/DeDupTest.java:22:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/dedup/example/DeDupTest.java:22:	fieldCommentRequirement Required
+src/test/java/com/dedup/example/DeDupTest.java:24:	Found non-transient, non-static member. Please mark as transient or provide accessors.
+src/test/java/com/dedup/example/DeDupTest.java:24:	Private field 'deDup' could be made final; it is only initialized in the declaration or constructor.
+src/test/java/com/dedup/example/DeDupTest.java:24:	fieldCommentRequirement Required
+src/test/java/com/dedup/example/DeDupTest.java:31:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:39:	Found 'UR'-anomaly for variable 's' (lines '39'-'43').
+src/test/java/com/dedup/example/DeDupTest.java:40:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:41:	Found 'DU'-anomaly for variable 'verifyContents' (lines '41'-'48').
+src/test/java/com/dedup/example/DeDupTest.java:41:	Local variable 'verifyContents' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:42:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:45:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:55:	Local variable 'input' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:57:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:66:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:76:	Found 'UR'-anomaly for variable 's' (lines '76'-'80').
+src/test/java/com/dedup/example/DeDupTest.java:77:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:78:	Found 'DU'-anomaly for variable 'verifyContents' (lines '78'-'85').
+src/test/java/com/dedup/example/DeDupTest.java:78:	Local variable 'verifyContents' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:79:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:82:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:94:	Local variable 'input' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:96:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:107:	Local variable 'input' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:109:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:118:	Local variable 'large' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:127:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:135:	Found 'UR'-anomaly for variable 's' (lines '135'-'139').
+src/test/java/com/dedup/example/DeDupTest.java:136:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:137:	Found 'DU'-anomaly for variable 'verifyContents' (lines '137'-'144').
+src/test/java/com/dedup/example/DeDupTest.java:137:	Local variable 'verifyContents' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:138:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:141:	Local variable 's' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:151:	Local variable 'input' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:153:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:163:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:165:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/com/dedup/example/DeDupTest.java:165:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/com/dedup/example/DeDupTest.java:175:	Local variable 'input' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:177:	Local variable 'dupsRemoved' could be declared final
+src/test/java/com/dedup/example/DeDupTest.java:179:	Potential violation of Law of Demeter (method chain calls)
+src/test/java/com/dedup/example/DeDupTest.java:179:	Potential violation of Law of Demeter (method chain calls)
