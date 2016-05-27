@@ -7,90 +7,158 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import com.dedup.example.exception.NonPositiveValueException;
+
+/**
+ * Removes Duplicates from integer array.
+ * 
+ * @author Meenal Jadhav
+ * @version 1.0
+ * 
+ *
+ */
 public class DeDup {
 
-	private static Logger logger = Logger.getLogger(DeDup.class);
+	/**
+	 * final log4j logger
+	 */
+	private static final Logger LOGGER = Logger.getLogger(DeDup.class);
 
+	/**
+	 * int array to hold input integer values
+	 */
 	private int[] randomIntegers;
+	
+	/**
+	 * Determine if random integer can be accessed
+	 */
+	private boolean access = false;
 
-	public DeDup(int[] input) {
+	/**
+	 * Create DeDup Object for given int array
+	 * @param input integer array
+	 * @throws IllegalArgumentException if the input array is null
+	 */
+	public DeDup(final int ... input ) throws IllegalArgumentException {
 
+		if(input == null) {
+			throw new IllegalArgumentException("Input array is null");
+		}
 		this.randomIntegers = input;
-	}
-
-	public void setRandomIntegers(int[] input) {
-		this.randomIntegers = input;
+		this.access = true;
 	}
 
 	/**
-	 * Removes duplication with the use of Set.
+	 * setter to override the int array
 	 * 
-	 * Advantage - Use of standard java data structure.
+	 * @param input integer array
+	 * @throws IllegalArgumentException - if the input is null
+	 */
+	public void setRandomIntegers(final int ... input) throws IllegalArgumentException{
+		if(input == null) {
+			throw new IllegalArgumentException("Input Array is null");
+		}
+		synchronized (this) {
+			this.access = false;
+			this.randomIntegers = input;
+			this.access = true;
+		}
+	}
+	
+	/**
+	 * getter for int array
+	 * @return copy of original integer array
+	 */
+	public int[] getRandomIntegers(){
+		if(this.access) {
+			return randomIntegers.clone();
+		} else {
+			synchronized (this) {
+				return getRandomIntegers();
+			}
+		}
+	}
+
+	/**
+	 * <p>Removes duplication with the use of Set.</p>
 	 * 
-	 * Disadvantage - Multiple looping of input dataset. Once to add to set and
-	 * then to convert back into int array as return value.
+	 * <p>Advantage - Use of standard java data structure.</p>
 	 * 
-	 * It is possible to clean the code with use of third party libraries like
+	 *<p> Disadvantage - Multiple looping of input dataset. Once to add to set and
+	 * then to convert back into int array as return value.</p>
+	 * 
+	 * <p>It is possible to clean the code with use of third party libraries like
 	 * Apache ArrayUtils to convert set back into int array, but the looping is
-	 * still unavoidable.
+	 * still unavoidable.</p>
 	 * 
-	 * @return
+	 * <p>@return int array with duplicates removed</p>
 	 */
 	public int[] removeDuplicatesWithSet() {
-		if(logger.isDebugEnabled()) {
-			logger.debug("Removing Duplicates with Set");
+		final long start = System.currentTimeMillis();
+		Set<Integer> hashSet = new HashSet<Integer>();
+		for (int i : getRandomIntegers()) {
+			hashSet.add(i);
 		}
-		Set<Integer> s = new HashSet<Integer>();
-		for (int i : randomIntegers) {
-			s.add(i);
-		}
-		int[] returnValue = new int[s.size()];
+		int[] returnValue = new int[hashSet.size()];
 		int i = 0;
-		for (Integer in : s) {
+		for (Integer in : hashSet) {
 			returnValue[i++] = in;
+		}
+		if(LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Remove Duplicates with Set Implementation took " + (System.currentTimeMillis() - start) + " milliseconds");
 		}
 		return returnValue;
 	}
 
 	/**
-	 * Removes Duplicates using additional int array.
+	 * <p>Removes Duplicates using additional int array.</p>
 	 * 
-	 * Advantage - Use of primitive array only.
+	 * <p>Advantage - Use of primitive array only.</p>
 	 * 
-	 * Disadvantage - Multiple looping of array. The total size required would
+	 * <p>Disadvantage - Multiple looping of array. The total size required would
 	 * also be large as second array size is dependent on the largest value in
-	 * the array. Works only with values greater than zero.
+	 * the array. Works only with values greater than zero.</p>
 	 * 
-	 * @return - sorted array with duplicates removed.
+	 * <p>@return - sorted array with duplicates removed.</p>
+	 * <p>@throws NonPositiveValueException - zero or negative value in the array</p>
 	 */
-	public int[] removeDuplicatesWithArray() throws Exception {
-		logger.debug("Removing Duplicates with Array");
-		int largest = findLargestValue();
+	public int[] removeDuplicatesWithArray() throws NonPositiveValueException {
+		final long start = System.currentTimeMillis();
+		final int largest = findLargestValue();
 		int[] deDup = new int[largest + 1];
-		for (int s : randomIntegers) {
-			if (s < 1)
-				throw new Exception("Zero or negative value in the input array.");
+		for (int s : getRandomIntegers()) {
+			if (s < 1) {
+				throw new NonPositiveValueException("Zero or negative value in the input array.");
+			}
 			deDup[s] = s;
 		}
 
 		// Find total non zero elements to determine final array size
 		int total = 0;
 		for (int s : deDup) {
-			if (s > 0)
+			if (s > 0) {
 				total++;
+			}
 		}
 		int[] returnValue = new int[total];
 		int i = 0;
 		for (int s : deDup) {
-			if (s > 0)
+			if (s > 0) {
 				returnValue[i++] = s;
+			}
+		}
+		if(LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Remove Duplicates with Array Implementation took " + (System.currentTimeMillis() - start) + " milliseconds");
 		}
 		return returnValue;
 	}
-
+	/**
+	 * Find the largest value
+	 * @return largest value in the array
+	 */
 	protected int findLargestValue() {
 		int large = Integer.MIN_VALUE;
-		for (int s : randomIntegers) {
+		for (int s : getRandomIntegers()) {
 			if (s > large) {
 				large = s;
 			}
@@ -99,23 +167,23 @@ public class DeDup {
 	}
 
 	/**
-	 * Removes duplicates with the use of ArrayList
+	 * <p>Removes duplicates with the use of ArrayList</p>
 	 * 
-	 * Advantage - Use of standard Java Data Structure. Maintains the order of
-	 * input array.
+	 * <p>Advantage - Use of standard Java Data Structure. Maintains the order of
+	 * input array.</p>
 	 * 
-	 * Disadvantage - Multiple looping of input dataset. Once to add to list and
-	 * then to convert back into int array as return value
+	 * <p>Disadvantage - Multiple looping of input dataset. Once to add to list and
+	 * then to convert back into int array as return value.</p>
 	 * 
-	 * It is possible to clean the code with use of third party libraries like
-	 * Apache ArrayUtils to convert List back into int array.
+	 * <p>It is possible to clean the code with use of third party libraries like
+	 * Apache ArrayUtils to convert List back into int array.</p>
 	 * 
-	 * @return
+	 * <p>@return  int array with duplicates removed in same order as input</p>
 	 */
 	public int[] removeDuplicatesWithList() {
-		logger.debug("Removing Duplicates with List to preserve order");
+		final long start = System.currentTimeMillis();
 		List<Integer> list = new ArrayList<Integer>();
-		for (int s : randomIntegers) {
+		for (int s : getRandomIntegers()) {
 			if (!list.contains(s)) {
 				list.add(s);
 			}
@@ -125,14 +193,22 @@ public class DeDup {
 		for (Integer s : list) {
 			returnValue[i++] = s;
 		}
+		if(LOGGER.isDebugEnabled()) {
+			LOGGER.debug("Remove Duplicates with List Implementation took " + (System.currentTimeMillis() - start) + " milliseconds");
+		}
 		return returnValue;
 	}
-
-	public static void main(String[] args) throws Exception {
-		int[] input = { 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000, 11, 16, 19, 1, 18, 4, 9, 3,
+	/**
+	 * Main Method
+	 * @param args  the program is not expecting any arguments
+	 * @throws NonPositiveValueException if the array contains any negative or zero value an exception is raised
+	 * during Array implementation.
+	 */
+	public static void main(String ... args) throws NonPositiveValueException {
+		final int[] input = { 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000, 11, 16, 19, 1, 18, 4, 9, 3,
 				20, 17, 8, 15, 6, 2, 5, 10, 14, 12, 13, 7, 8, 9, 1, 2, 15, 12, 18, 10, 14, 20, 17, 16, 3, 6, 19, 13, 5,
 				11, 4, 7, 19, 16, 5, 9, 12, 3, 20, 7, 15, 17, 10, 6, 1, 8, 18, 4, 14, 13, 2, 11 };
-		logger.info("Start");
+		LOGGER.info("Start");
 		
 		
 		DeDup deDup = new DeDup(input);
@@ -148,34 +224,34 @@ public class DeDup {
 		
 		long beforeList = System.currentTimeMillis();
 		int[] deDupFromListImpl = deDup.removeDuplicatesWithList();
-		long afterList = System.currentTimeMillis();
+		long afterList = System.currentTimeMillis(); 
 		
-		if (logger.isInfoEnabled()) {
+		if (LOGGER.isInfoEnabled()) {
 			StringBuilder sb = new StringBuilder();
 
 			sb.append("\nTotal time taken is ").append((afterList - start)).append(" milliseconds\n");
 
 			sb.append("\n\nInput Integer Array has ").append(input.length).append(" elements\n");
 			for (int s : input) {
-				sb.append(s).append(" ");
+				sb.append(s).append(' ');
 			}
 
 			sb.append("\n\nOutput from Set Implementation has ").append(deDupFromSetImpl.length).append(" elements and took ").append((afterSet - start)).append(" milliseconds\n");
 			for (int s : deDupFromSetImpl) {
-				sb.append(s).append(" ");
+				sb.append(s).append(' ');
 			}
 			sb.append("\n\nOutput from Array Implementation has ").append(deDupFromArrayImpl.length).append(" elements and took ").append((afterArray - beforeArray)).append(" milliseconds\n");
-			for( int s : deDupFromArrayImpl) {
-				sb.append(s).append(" ");
+			for(int s : deDupFromArrayImpl) {
+				sb.append(s).append(' ');
 			}
 			sb.append("\n\nOutput from List Implementation has ").append(deDupFromArrayImpl.length).append(" elements and took ").append((afterList - beforeList)).append(" milliseconds\n");
 			for (int s : deDupFromListImpl) {
-				sb.append(s).append(" ");
+				sb.append(s).append(' ');
 			}
 
-			logger.info(sb.toString());
+			LOGGER.info(sb.toString());
 		}
-		logger.info("End");
+		LOGGER.info("End");
 	}
 
 }

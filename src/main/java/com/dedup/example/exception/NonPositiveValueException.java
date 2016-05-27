@@ -3,6 +3,8 @@ package com.dedup.example.exception;
 /**
  * 
  * Exception Class
+ * @author Meenal Jadhav
+ * @version 1.0
  */
 public class NonPositiveValueException extends Exception {
 
