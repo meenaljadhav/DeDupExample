@@ -22,6 +22,12 @@
   To Generate Java Docs for the Application use command
   ``` mvn javadoc:javadoc ```
   
-  Current Java Docs are available in apidocs folder.
+  Current Java Docs are available in apidocs folder. 
+  The default location for newly generated Java Docs is in target/site folder.
+  
+## Solution Details
+  Word Document (Solutions.docx) detailing the Solution including all three implementation,
+  along with Advantages and Disadvantages, input/output and time taken to de-duplicate the list, 
+  can be found in root folder.
   
   

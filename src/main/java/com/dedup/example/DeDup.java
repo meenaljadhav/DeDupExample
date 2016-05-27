@@ -82,7 +82,8 @@ public class DeDup {
 	/**
 	 * <p>Removes duplication with the use of Set.</p>
 	 * 
-	 * <p>Advantage - Use of standard java data structure.</p>
+	 * <p>Advantage - Use of standard java data structure.
+	 * Reduced development effort by using core collection classes rather than implementing our own collection classes.</p>
 	 * 
 	 *<p> Disadvantage - Multiple looping of input dataset. Once to add to set and
 	 * then to convert back into int array as return value.</p>
@@ -117,7 +118,8 @@ public class DeDup {
 	 * 
 	 * <p>Disadvantage - Multiple looping of array. The total size required would
 	 * also be large as second array size is dependent on the largest value in
-	 * the array. Works only with values greater than zero.</p>
+	 * the array. Works only with values greater than zero.We need to know the size of the array in advance.
+	 * Since array is of fixed size, if we allocate more memory than requirement then the memory space will be wasted</p>
 	 * 
 	 * <p>@return - sorted array with duplicates removed.</p>
 	 * <p>@throws NonPositiveValueException - zero or negative value in the array</p>
@@ -169,7 +171,7 @@ public class DeDup {
 	/**
 	 * <p>Removes duplicates with the use of ArrayList</p>
 	 * 
-	 * <p>Advantage - Use of standard Java Data Structure. Maintains the order of
+	 * <p>Advantage - Use of standard Java Data Structure.ArrayList maintains the order of
 	 * input array.</p>
 	 * 
 	 * <p>Disadvantage - Multiple looping of input dataset. Once to add to list and
