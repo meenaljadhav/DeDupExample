@@ -18,3 +18,10 @@
   ``` java -jar target/seiTest-1.0-SNAPSHOT-jar-with-dependencies.jar ```
   
   
+## Java Docs
+  To Generate Java Docs for the Application use command
+  ``` mvn javadoc:javadoc ```
+  
+  Current Java Docs are available in apidocs folder.
+  
+  
