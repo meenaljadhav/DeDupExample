@@ -22,31 +22,13 @@ public class DeDupTest {
 	public int[] randomIntegers = { 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000 };
 	public int[] deDupIntegers = { 1, 2, 34, 25, 45, 3, 26, 85, 4, 86, 43, 10000 };
 
-	private DeDup deDup = new DeDup(randomIntegers);
-	
-	/**
-	 * Test for null values in constructor
-	 */
-	@Test(expected=IllegalArgumentException.class)
-	public void nullValueConstuctorTest() {
-		new DeDup(null);
-	}
-
-	/**
-	 * Test for null values in constructor
-	 */
-	@Test(expected=IllegalArgumentException.class)
-	public void nullValueSetterTest() {
-		DeDup deDup = new DeDup(0);
-		deDup.setRandomIntegers(null);
-	}
-
 	/**
 	 * Test if size of arrays match for input and duplicate removed.
 	 */
 	@Test
 	public void removeDuplicatesWithSetTest() {
-		int[] dupsRemoved = deDup.removeDuplicatesWithSet();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithSet(randomIntegers);
 		assertEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 	
@@ -55,7 +37,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicatesWithSetTestForContent() {
-		int[] dupsRemoved = deDup.removeDuplicatesWithSet();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithSet(randomIntegers);
 		List<Integer> verifyContents = new ArrayList<Integer>();
 		for (int s : randomIntegers) {
 			verifyContents.add(s);
@@ -71,8 +54,8 @@ public class DeDupTest {
 	@Test
 	public void removeDuplicatesWithSetTestForNegative() {
 		int[] input = { -1, 2, 34, 34, 25, -1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, -1, 10000 };
-		deDup.setRandomIntegers(input);
-		int[] dupsRemoved = deDup.removeDuplicatesWithSet();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithSet(input);
 		assertEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -81,7 +64,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicateWithArrayTest() throws NonPositiveValueException {
-		int[] dupsRemoved = deDup.removeDuplicatesWithArray();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithArray(randomIntegers);
 		assertEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -92,7 +76,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicateWithArrayTestForContent() throws NonPositiveValueException {
-		int[] dupsRemoved = deDup.removeDuplicatesWithArray();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithArray(randomIntegers);
 		List<Integer> verifyContents = new ArrayList<Integer>();
 		for (int s : randomIntegers) {
 			verifyContents.add(s);
@@ -110,8 +95,8 @@ public class DeDupTest {
 	@Test(expected = NonPositiveValueException.class)
 	public void removeDuplicateWithArrayTestWithExpection1() throws NonPositiveValueException {
 		int[] input = { 0, 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000 };
-		deDup.setRandomIntegers(input);
-		int[] dupsRemoved = deDup.removeDuplicatesWithArray();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithArray(input);
 		assertNotEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -123,8 +108,8 @@ public class DeDupTest {
 	@Test(expected = NonPositiveValueException.class)
 	public void removeDuplicateWithArrayTestWithExpection2() throws NonPositiveValueException {
 		int[] input = { -1, 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000 };
-		deDup.setRandomIntegers(input);
-		int[] dupsRemoved = deDup.removeDuplicatesWithArray();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithArray(input);
 		assertNotEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -133,7 +118,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void findLargestValueTest() {
-		int large = deDup.findLargestValue();
+		DeDup deDup = new DeDup();
+		int large = deDup.findLargestValue(randomIntegers);
 		assertEquals(10000, large);
 	}
 
@@ -142,7 +128,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicateWithListTest() {
-		int[] dupsRemoved = deDup.removeDuplicatesWithList();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithList(randomIntegers);
 		assertEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -151,7 +138,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicateWithListTestForContent() {
-		int[] dupsRemoved = deDup.removeDuplicatesWithList();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithList(randomIntegers);
 		List<Integer> verifyContents = new ArrayList<Integer>();
 		for (int s : randomIntegers) {
 			verifyContents.add(s);
@@ -167,8 +155,8 @@ public class DeDupTest {
 	@Test
 	public void removeDuplicateWithListTestForNegative() {
 		int[] input = { -1, 2, 34, 34, 25, -1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, -1, 10000 };
-		deDup.setRandomIntegers(input);
-		int[] dupsRemoved = deDup.removeDuplicatesWithList();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithList(input);
 		assertEquals(dupsRemoved.length, deDupIntegers.length);
 	}
 
@@ -178,7 +166,8 @@ public class DeDupTest {
 	 */
 	@Test
 	public void removeDuplicateWithListTestForOrder() {
-		int[] dupsRemoved = deDup.removeDuplicatesWithList();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithList(randomIntegers);
 		for (int i = 0; i < dupsRemoved.length; i++) {
 			assertEquals(dupsRemoved[i], deDupIntegers[i]);
 		}
@@ -191,8 +180,8 @@ public class DeDupTest {
 	public void removeDuplicateWithListTestForNoDups() {
 		// Testing for input with no duplicates
 		int[] input = { 1, 2, 34, 25, 45, 3, 26, 85, 4, 86, 43, 10000 };
-		deDup.setRandomIntegers(input);
-		int[] dupsRemoved = deDup.removeDuplicatesWithList();
+		DeDup deDup = new DeDup();
+		int[] dupsRemoved = deDup.removeDuplicatesWithList(input);
 		for (int i = 0; i < dupsRemoved.length; i++) {
 			assertEquals(dupsRemoved[i], deDupIntegers[i]);
 		}

@@ -1,6 +1,8 @@
 package com.dedup.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,59 +27,12 @@ public class DeDup {
 	private static final Logger LOGGER = Logger.getLogger(DeDup.class);
 
 	/**
-	 * int array to hold input integer values
-	 */
-	private int[] randomIntegers;
-	
-	/**
-	 * Determine if random integer can be accessed
-	 */
-	private boolean access = false;
-
-	/**
-	 * Create DeDup Object for given int array
-	 * @param input integer array
-	 * @throws IllegalArgumentException if the input array is null
-	 */
-	public DeDup(final int ... input ) throws IllegalArgumentException {
-
-		if(input == null) {
-			throw new IllegalArgumentException("Input array is null");
-		}
-		this.randomIntegers = input;
-		this.access = true;
-	}
-
-	/**
-	 * setter to override the int array
+	 * Default Constructor.
 	 * 
-	 * @param input integer array
-	 * @throws IllegalArgumentException - if the input is null
 	 */
-	public void setRandomIntegers(final int ... input) throws IllegalArgumentException{
-		if(input == null) {
-			throw new IllegalArgumentException("Input Array is null");
-		}
-		synchronized (this) {
-			this.access = false;
-			this.randomIntegers = input;
-			this.access = true;
-		}
+	public DeDup() {
 	}
-	
-	/**
-	 * getter for int array
-	 * @return copy of original integer array
-	 */
-	public int[] getRandomIntegers(){
-		if(this.access) {
-			return randomIntegers.clone();
-		} else {
-			synchronized (this) {
-				return getRandomIntegers();
-			}
-		}
-	}
+
 
 	/**
 	 * <p>Removes duplication with the use of Set.</p>
@@ -94,10 +49,14 @@ public class DeDup {
 	 * 
 	 * <p>@return int array with duplicates removed</p>
 	 */
-	public int[] removeDuplicatesWithSet() {
+	public int[] removeDuplicatesWithSet(final int ... input) throws IllegalArgumentException {
+		if(input == null) {
+			throw new IllegalArgumentException("Null Input is not acceptable.");
+		}
+		int[] randomIntegers = Arrays.copyOf(input, input.length);
 		final long start = System.currentTimeMillis();
-		Set<Integer> hashSet = new HashSet<Integer>();
-		for (int i : getRandomIntegers()) {
+		Set<Integer> hashSet = Collections.synchronizedSet(new HashSet<Integer>());
+		for (int i : randomIntegers) {
 			hashSet.add(i);
 		}
 		int[] returnValue = new int[hashSet.size()];
@@ -124,11 +83,15 @@ public class DeDup {
 	 * <p>@return - sorted array with duplicates removed.</p>
 	 * <p>@throws NonPositiveValueException - zero or negative value in the array</p>
 	 */
-	public int[] removeDuplicatesWithArray() throws NonPositiveValueException {
+	public int[] removeDuplicatesWithArray(final int ... input) throws NonPositiveValueException, IllegalArgumentException {
+		if(input == null) {
+			throw new IllegalArgumentException("Null Input is not acceptable.");
+		}
+		int[] randomIntegers = Arrays.copyOf(input, input.length);
 		final long start = System.currentTimeMillis();
-		final int largest = findLargestValue();
+		final int largest = findLargestValue(input);
 		int[] deDup = new int[largest + 1];
-		for (int s : getRandomIntegers()) {
+		for (int s : randomIntegers) {
 			if (s < 1) {
 				throw new NonPositiveValueException("Zero or negative value in the input array.");
 			}
@@ -158,9 +121,13 @@ public class DeDup {
 	 * Find the largest value
 	 * @return largest value in the array
 	 */
-	protected int findLargestValue() {
+	protected int findLargestValue(final int ... input) {
+		if(input == null) {
+			throw new IllegalArgumentException("Null Input is not acceptable.");
+		}
+		int[] randomIntegers = input;
 		int large = Integer.MIN_VALUE;
-		for (int s : getRandomIntegers()) {
+		for (int s : randomIntegers) {
 			if (s > large) {
 				large = s;
 			}
@@ -182,10 +149,14 @@ public class DeDup {
 	 * 
 	 * <p>@return  int array with duplicates removed in same order as input</p>
 	 */
-	public int[] removeDuplicatesWithList() {
+	public int[] removeDuplicatesWithList(final int ... input) throws IllegalArgumentException {
+		if(input == null) {
+			throw new IllegalArgumentException("Null Input is not acceptable.");
+		}
+		int[] randomIntegers = Arrays.copyOf(input, input.length);
 		final long start = System.currentTimeMillis();
-		List<Integer> list = new ArrayList<Integer>();
-		for (int s : getRandomIntegers()) {
+		List<Integer> list = Collections.synchronizedList(new ArrayList<Integer>());
+		for (int s : randomIntegers) {
 			if (!list.contains(s)) {
 				list.add(s);
 			}
@@ -206,26 +177,26 @@ public class DeDup {
 	 * @throws NonPositiveValueException if the array contains any negative or zero value an exception is raised
 	 * during Array implementation.
 	 */
-	public static void main(String ... args) throws NonPositiveValueException {
+	public static void main(String ... args) throws NonPositiveValueException, IllegalArgumentException {
 		final int[] input = { 1, 2, 34, 34, 25, 1, 45, 3, 26, 85, 4, 34, 86, 25, 43, 2, 1, 10000, 11, 16, 19, 1, 18, 4, 9, 3,
 				20, 17, 8, 15, 6, 2, 5, 10, 14, 12, 13, 7, 8, 9, 1, 2, 15, 12, 18, 10, 14, 20, 17, 16, 3, 6, 19, 13, 5,
 				11, 4, 7, 19, 16, 5, 9, 12, 3, 20, 7, 15, 17, 10, 6, 1, 8, 18, 4, 14, 13, 2, 11 };
 		LOGGER.info("Start");
 		
 		
-		DeDup deDup = new DeDup(input);
+		DeDup deDup = new DeDup(); // No Class level Variables
 		
 		long start = System.currentTimeMillis();
-		int[] deDupFromSetImpl = deDup.removeDuplicatesWithSet();
+		int[] deDupFromSetImpl = deDup.removeDuplicatesWithSet(input);
 		long afterSet = System.currentTimeMillis();
 		
 		
 		long beforeArray = System.currentTimeMillis();
-		int[] deDupFromArrayImpl = deDup.removeDuplicatesWithArray();
+		int[] deDupFromArrayImpl = deDup.removeDuplicatesWithArray(input);
 		long afterArray = System.currentTimeMillis();
 		
 		long beforeList = System.currentTimeMillis();
-		int[] deDupFromListImpl = deDup.removeDuplicatesWithList();
+		int[] deDupFromListImpl = deDup.removeDuplicatesWithList(input);
 		long afterList = System.currentTimeMillis(); 
 		
 		if (LOGGER.isInfoEnabled()) {
